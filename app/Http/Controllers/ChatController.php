@@ -8,7 +8,7 @@ use App\ChatMessage;
 
 use App\Chatroom;
 
-use App\Comment;
+
 
 class ChatController extends Controller
 {
@@ -40,13 +40,14 @@ class ChatController extends Controller
      */
     public function store(Request $request)
     {
-        $product = new Product;
+        $row = new ChatMessage;
 
-        $product->name = $request->name;
-        $product->price = $request->price;
-        $product->description = $request->description;
+        $row->text = $request->text;
 
-        $product->save();
+        $row->save();
+
+        return response()->json($row,201);
+
     }
 
     /**
@@ -57,7 +58,7 @@ class ChatController extends Controller
      */
     public function show($id)
     {
-        //
+        return response()->json(App\ChatMessage::findOrFail($id),200);
     }
 
     /**
