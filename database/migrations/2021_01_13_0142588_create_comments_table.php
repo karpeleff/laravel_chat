@@ -13,10 +13,22 @@ class CreateCommentsTable extends Migration
      */
     public function up()
     {
-        Schema::create('comments', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->timestamps();
+       Schema::create('comments', function (Blueprint $table) {
+            $table->bigIncrements('id')->unsigned();
+            $table->integer('chatmessage_id');
+
+            $table->foreign('chatmessage_id')->references('id')->on('chat_messages');
+            $table->string('text');
+            $table->timestamps();*/
         });
+
+
+
+
+
+
+
+
     }
 
     /**

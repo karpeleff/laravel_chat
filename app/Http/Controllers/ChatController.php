@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\ChatMessage;
+
+use App\Chatroom;
+
+use App\Comment;
+
 class ChatController extends Controller
 {
     /**
@@ -34,7 +40,13 @@ class ChatController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $product = new Product;
+
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->description = $request->description;
+
+        $product->save();
     }
 
     /**
